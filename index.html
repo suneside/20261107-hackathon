@@ -13,6 +13,7 @@
     <a class="cur" href="index.html">🏠 홈</a>
     <a href="onboarding.html">🚀 팀 온보딩</a>
     <a href="schedule.html">🗓 일정 · 실행계획</a>
+    <a href="guide.html">🤖 AI 설명서</a>
     <a href="https://github.com/suneside/20261107-hackathon" target="_blank" rel="noopener">📦 GitHub</a>
   </nav>
 
@@ -42,11 +43,11 @@
       <span class="d">코드를 함께 올리는 곳. 공개 저장소라 팀원 누구나 열 수 있습니다.</span>
       <span class="go">저장소 열기 →</span>
     </a>
-    <a class="card redcard" href="협업가이드.md" download>
+    <a class="card redcard" href="guide.html">
       <span class="ic">🤖</span>
       <span class="t">AI 협업 설명서</span>
-      <span class="d">막히면 이 파일을 AI에 그대로 주세요. 규칙대로 대신 진행합니다.</span>
-      <span class="go">.md 다운로드 →</span>
+      <span class="d">먼저 읽어 보고, 안에서 복사하거나 .md로 내려받으세요.</span>
+      <span class="go">열어 보기 →</span>
     </a>
   </div>
 
@@ -74,24 +75,14 @@
   <div class="ai">
     <span class="tag">AI에게 붙여넣기</span>
     <h2>막히면 AI에게 맡기세요</h2>
-    <p>아래 설명서를 복사해 Claude Code · ChatGPT에 주면, 팀 협업 규칙대로 대신 진행합니다.</p>
+    <p>설명서 페이지에서 먼저 내용을 읽고, 그 안에서 복사하거나 .md로 내려받을 수 있습니다.</p>
     <div class="btns">
-      <button class="copy" id="copyBtn" type="button">📋 설명서 전체 복사</button>
-      <a class="dl" href="협업가이드.md" download>⬇ .md 다운로드</a>
+      <a class="dl" href="guide.html" style="background:var(--red);color:#fff;border:none">🤖 설명서 열어 보기 →</a>
     </div>
   </div>
 
   <div class="foot">첫 페이지는 큰 항목만. 상세는 각 카드의 하위 페이지에 있습니다. 출처: <a href="https://docs.github.com/en/get-started/using-github/github-flow" target="_blank" rel="noopener">GitHub flow 공식 문서</a></div>
 </div>
 
-<script>
-  var guideCache=null,cbtn=document.getElementById('copyBtn');
-  fetch('협업가이드.md').then(function(r){return r.text()}).then(function(t){guideCache=t}).catch(function(){});
-  cbtn.addEventListener('click',function(){
-    var put=function(t){var ok=function(){cbtn.textContent='✓ 복사됨';setTimeout(function(){cbtn.textContent='📋 설명서 전체 복사'},1600)};
-      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,function(){cbtn.textContent='다운로드를 이용하세요'});else cbtn.textContent='다운로드를 이용하세요'};
-    if(guideCache)put(guideCache);else fetch('협업가이드.md').then(function(r){return r.text()}).then(function(t){guideCache=t;put(t)}).catch(function(){cbtn.textContent='불러오기 실패 — .md 다운로드'});
-  });
-</script>
 </body>
 </html>

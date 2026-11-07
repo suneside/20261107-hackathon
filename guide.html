@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI 협업 설명서 — 해커톤 팀 허브</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .guidebox{margin-top:18px;border:2px solid var(--red);border-radius:14px;overflow:hidden}
+  .guidebox .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--red-soft);padding:14px 16px;border-bottom:1px solid color-mix(in srgb,var(--red) 30%,transparent)}
+  .guidebox .bar .ttl{font-weight:700;color:var(--red-ink);display:flex;align-items:center;gap:8px}
+  .guidebox .bar .acts{display:flex;gap:9px;flex-wrap:wrap}
+  .guidebox button,.guidebox a.dl{font:600 13.5px var(--fb);border-radius:9px;padding:8px 15px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .guidebox button.copy{background:var(--red);color:#fff;border:none}
+  .guidebox a.dl{background:var(--paper);color:var(--red-ink);border:1.5px solid var(--red)}
+  .mdview{padding:20px;background:var(--paper)}
+  .mdview h3{font-size:16px;margin:18px 0 8px;color:var(--ink)}
+  .mdview h3:first-child{margin-top:0}
+  .mdview p{margin:8px 0;font-size:14.5px}
+  .mdview ul,.mdview ol{margin:8px 0;padding-left:22px;display:grid;gap:5px}
+  .mdview li{font-size:14.5px}
+  .mdview pre{background:var(--code-bg);color:var(--code-fg);border-radius:8px;padding:12px 14px;overflow-x:auto;font-family:var(--fm);font-size:12.5px;line-height:1.6;margin:10px 0}
+  .mdview .blockquote{border-left:3px solid var(--line);padding:4px 0 4px 14px;color:var(--muted);font-size:13.5px;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav">
+    <a href="index.html">🏠 홈</a>
+    <a href="onboarding.html">🚀 팀 온보딩</a>
+    <a href="schedule.html">🗓 일정 · 실행계획</a>
+    <a class="cur" href="guide.html">🤖 AI 설명서</a>
+    <a href="https://github.com/suneside/20261107-hackathon" target="_blank" rel="noopener">📦 GitHub</a>
+  </nav>
+
+  <header class="pg">
+    <p class="eyebrow">상세 · AI에게 붙여넣는 설명서</p>
+    <h1>AI 협업 설명서</h1>
+    <p class="lead">먼저 아래 내용을 읽어 보세요. 막히면 <b>전체 복사</b>해서 Claude Code · ChatGPT에 주거나, <b>.md로 다운로드</b>해 보관하면 됩니다.</p>
+  </header>
+
+  <div class="guidebox">
+    <div class="bar">
+      <span class="ttl">🤖 팀 협업 설명서</span>
+      <span class="acts">
+        <button class="copy" id="copyBtn" type="button">📋 전체 복사</button>
+        <a class="dl" href="협업가이드.md" download>⬇ .md 다운로드</a>
+      </span>
+    </div>
+    <div class="mdview" id="mdview">
+      <h3>역할</h3>
+      <p>AI는 이 해커톤 팀의 개발 보조입니다. 아래 GitHub 흐름과 규칙을 지켜 코드를 함께 빌드합니다.</p>
+
+      <h3>저장소 받기 (처음 한 번)</h3>
+      <pre>git clone https://github.com/suneside/20261107-hackathon.git
+cd 20261107-hackathon</pre>
+
+      <h3>작업 흐름 (기능 1개 = 브랜치 1개 = PR 1개)</h3>
+      <pre>git switch main
+git pull origin main
+git switch -c feat/기능이름
+# ... 코드 작성 ...
+git add .
+git commit -m "feat: 무엇을 했는지 한 줄"
+git push -u origin feat/기능이름</pre>
+      <p>그다음 GitHub에서 Pull Request를 열고, 팀원 1명이 확인(리뷰) 후 Merge. 머지되면 모두 <code class="inl">git switch main &amp;&amp; git pull origin main</code>.</p>
+
+      <h3>팀 규칙 5가지</h3>
+      <ol>
+        <li>main에 직접 push 금지. 항상 브랜치 + PR.</li>
+        <li>파일을 사람별/영역별로 나눠 같은 파일을 동시에 안 건드린다.</li>
+        <li>작게, 자주 커밋·PR. 큰 PR은 충돌 덩어리.</li>
+        <li>시크릿(API 키)은 <code class="inl">.env</code> + <code class="inl">.gitignore</code>. 공유는 <code class="inl">.env.example</code>로만.</li>
+        <li>시작할 때 pull, 끝낼 때 반드시 push.</li>
+      </ol>
+
+      <h3>커밋 메시지 형식</h3>
+      <p><code class="inl">&lt;type&gt;: &lt;설명&gt;</code> (type = feat, fix, refactor, docs, test, chore)</p>
+
+      <h3>충돌이 났을 때</h3>
+      <pre>git switch main &amp;&amp; git pull origin main
+git switch feat/기능이름
+git merge main
+# 충돌 표시(&lt;&lt;&lt; ==== &gt;&gt;&gt;)를 정리하고
+git add 충돌난파일 &amp;&amp; git commit &amp;&amp; git push</pre>
+
+      <h3>커밋 작성자 정보 (처음 한 번)</h3>
+      <pre>git config --global user.name  "본인이름"
+git config --global user.email "본인@example.com"</pre>
+    </div>
+    <div class="bar" style="border-bottom:none;border-top:1px solid color-mix(in srgb,var(--red) 30%,transparent)">
+      <span class="ttl" style="font-weight:500;font-size:13.5px">읽었으면 복사하거나 내려받아 쓰세요 →</span>
+      <span class="acts">
+        <button class="copy" id="copyBtn2" type="button">📋 전체 복사</button>
+        <a class="dl" href="협업가이드.md" download>⬇ .md 다운로드</a>
+      </span>
+    </div>
+  </div>
+
+  <div class="foot">이 설명서 원문은 저장소의 <code class="inl">협업가이드.md</code>와 동일합니다.</div>
+</div>
+
+<script>
+  var cache=null;
+  fetch('협업가이드.md').then(function(r){return r.text()}).then(function(t){cache=t}).catch(function(){});
+  function wire(btn){
+    if(!btn)return;
+    btn.addEventListener('click',function(){
+      var put=function(t){var ok=function(){var o=btn.textContent;btn.textContent='✓ 복사됨';setTimeout(function(){btn.textContent=o},1500)};
+        if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,function(){btn.textContent='다운로드 이용'});else btn.textContent='다운로드 이용'};
+      if(cache)put(cache);else fetch('협업가이드.md').then(function(r){return r.text()}).then(function(t){cache=t;put(t)}).catch(function(){btn.textContent='불러오기 실패'});
+    });
+  }
+  wire(document.getElementById('copyBtn'));
+  wire(document.getElementById('copyBtn2'));
+</script>
+</body>
+</html>
