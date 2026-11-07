@@ -92,3 +92,13 @@ tr.meal td{background:var(--soft)}
 .track{display:grid;grid-template-columns:70px 1fr;gap:10px;font-size:13.5px}
 .track b{color:var(--ink)}
 .foot{margin-top:44px;padding-top:18px;border-top:2px solid var(--fg);color:var(--muted);font-size:13px}
+/* 일정: 꼭할것(빨강) / 병렬 */
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;font-size:13px;color:var(--muted)}
+.legend b{color:var(--fg)}
+.lg{display:inline-flex;align-items:center;gap:6px}
+.lg .sw{width:14px;height:14px;border-radius:4px;display:inline-block}
+td.must{color:var(--red);font-weight:700}
+td.must .m0{color:var(--muted);font-weight:400}
+.par{display:inline-block;font:600 11.5px var(--fb);padding:2px 9px;border-radius:999px;background:color-mix(in srgb,var(--build) 16%,transparent);color:var(--build);margin:2px 4px 2px 0}
+td.parcell{color:var(--muted)}
+.crit{background:var(--red);color:#fff;font:700 11px var(--fb);padding:2px 8px;border-radius:999px;margin-left:4px}
