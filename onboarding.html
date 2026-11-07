@@ -15,6 +15,7 @@
     <a href="schedule.html">🗓 일정 · 실행계획</a>
     <a href="guide.html">🤖 AI 설명서</a>
     <a href="https://github.com/suneside/20261107-hackathon" target="_blank" rel="noopener">📦 GitHub</a>
+    <a class="dl-chip" href="index.html" title="결과물 제출 마감 17:00 정각까지">⏱ 마감 <b data-countdown-compact>--:--:--</b></a>
   </nav>
 
   <header class="pg">
@@ -126,5 +127,6 @@ git pull origin main</pre></div>
   steps.forEach(function(el){el.querySelector('input').addEventListener('change',function(){var s=load();s[el.dataset.k]=this.checked;save(s);sync()})});
   sync();
 </script>
+<script src="timer.js"></script>
 </body>
 </html>
