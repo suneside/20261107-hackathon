@@ -132,13 +132,13 @@ td.parcell{color:var(--muted)}
 .odo .u{font:500 11px var(--fb);letter-spacing:.12em;color:#7f8fb0}
 .odo .sep{font:600 clamp(30px,9vw,80px)/1.15 var(--fm);color:#46557a}
 .odo-d{display:inline-block;height:1.15em;width:.66em;overflow:hidden;background:#1a2235;border-radius:.12em;font:600 clamp(30px,9vw,80px)/1.15 var(--fm);color:#f4f7ff;text-align:center;box-shadow:inset 0 -.06em 0 rgba(0,0,0,.4)}
-.odo-strip{display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.18,.89,.32,1.15)}
+.odo-strip{display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.25,.8,.3,1)}
 .odo-strip>span{display:block;height:1.15em;line-height:1.15em}
 .deadline.warn .odo-d{color:#ffcf5c}
 .deadline.crit{border-color:#ff5a5a;box-shadow:0 0 0 3px rgba(255,90,90,.28)}
 .deadline.crit .odo-d,.deadline.over .odo-d{color:#ff7070}
-@media (prefers-reduced-motion:no-preference){.deadline.crit{animation:dlpulse 1s ease-in-out infinite}}
-@keyframes dlpulse{50%{box-shadow:0 0 0 8px rgba(255,90,90,.12)}}
+@media (prefers-reduced-motion:no-preference){.deadline.crit{animation:dlpulse 2.4s ease-in-out infinite}}
+@keyframes dlpulse{50%{box-shadow:0 0 0 6px rgba(255,90,90,.08)}}
 @media (prefers-reduced-motion:reduce){.odo-strip{transition:none}}
 .dl-ms{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;font-size:13px;color:#9fb0d0}
 .dl-ms b{font:600 13px var(--fm);color:#eef2fb;font-variant-numeric:tabular-nums}
@@ -146,8 +146,7 @@ td.parcell{color:var(--muted)}
 .nav a.dl-chip{margin-left:auto;background:#0f1420;color:#eef2fb;border-color:#0f1420}
 .nav a.dl-chip b{font:600 13px var(--fm);font-variant-numeric:tabular-nums}
 /* 1/100초: 10분의 1초는 짧게, 100분의 1초는 매 프레임 회전 */
-.odo-d.tenths .odo-strip{transition:transform .12s linear}
-.odo-d.hund .odo-strip{transition:transform .04s linear}
-.grp.cs .odo-d{color:#8fb4ff}
-.deadline.warn .grp.cs .odo-d{color:#ffcf5c}
-.deadline.crit .grp.cs .odo-d,.deadline.over .grp.cs .odo-d{color:#ff7070}
+.odo-d.tenths .odo-strip,.odo-d.hund .odo-strip{transition:none}
+.grp.cs{align-self:flex-end}
+.grp.cs .odo-d{font-size:clamp(16px,4.4vw,38px);width:.62em;color:#6f7fa3;background:transparent;box-shadow:none}
+.grp.cs [data-g="c"]::before{content:".";font:600 clamp(16px,4.4vw,38px)/1.15 var(--fm);color:#46557a}
