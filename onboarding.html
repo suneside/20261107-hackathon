@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>팀 온보딩 — 해커톤 팀 허브</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav">
+    <a href="index.html">🏠 홈</a>
+    <a class="cur" href="onboarding.html">🚀 팀 온보딩</a>
+    <a href="schedule.html">🗓 일정 · 실행계획</a>
+    <a href="https://github.com/suneside/20261107-hackathon" target="_blank" rel="noopener">📦 GitHub</a>
+  </nav>
+
+  <header class="pg">
+    <p class="eyebrow">상세 · 따라 하기</p>
+    <h1>위에서부터 그대로 따라 하세요</h1>
+    <p class="lead">저장소 받기부터 첫 Pull Request까지. 명령은 오른쪽 <b>복사</b> 버튼으로 복사해 터미널에 붙여넣으세요.</p>
+    <div class="phases" style="margin-top:14px">
+      <div class="phase" style="grid-template-columns:1fr"><span><span class="lb" id="ptext">0 / 6 완료</span></span></div>
+    </div>
+  </header>
+
+  <section class="step" data-k="s0">
+    <div class="chk"><input type="checkbox" aria-label="완료"></div>
+    <h2><span class="n">0</span>준비물 확인</h2>
+    <div class="b">
+      <ul>
+        <li><b>GitHub 계정</b> — 없으면 <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> 가입 후 아이디를 팀장에게 전달.</li>
+        <li><b>Git 설치</b> — 아래 명령으로 버전이 나오면 설치됨.</li>
+      </ul>
+      <div class="code"><button class="cp" type="button">복사</button><pre>git --version</pre></div>
+      <p class="note">macOS는 실행 시 자동 설치 안내가 뜹니다. Windows는 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com</a>.</p>
+    </div>
+  </section>
+
+  <section class="step" data-k="s1">
+    <div class="chk"><input type="checkbox" aria-label="완료"></div>
+    <h2><span class="n">1</span>내 정보 등록 (처음 한 번)</h2>
+    <div class="b">
+      <div class="code"><button class="cp" type="button">복사</button><pre>git config --global user.name  "본인이름"
+git config --global user.email "본인@example.com"</pre></div>
+      <p class="note">GitHub 가입 이메일을 그대로. 커밋에 이 정보가 찍힙니다.</p>
+    </div>
+  </section>
+
+  <section class="step" data-k="s2">
+    <div class="chk"><input type="checkbox" aria-label="완료"></div>
+    <h2><span class="n">2</span>저장소 받기</h2>
+    <div class="b">
+      <div class="code"><button class="cp" type="button">복사</button><pre>git clone https://github.com/suneside/20261107-hackathon.git
+cd 20261107-hackathon</pre></div>
+      <p class="note">공개 저장소라 바로 clone됩니다. push 권한이 필요하면 팀장에게 Collaborator 초대를 요청하세요.</p>
+    </div>
+  </section>
+
+  <section class="step" data-k="s3">
+    <div class="chk"><input type="checkbox" aria-label="완료"></div>
+    <h2><span class="n">3</span>내 브랜치에서 작업</h2>
+    <div class="b">
+      <p class="note">기능 하나마다 브랜치를 새로. 이름 예: <code class="inl">feat/login-ui</code></p>
+      <div class="code"><button class="cp" type="button">복사</button><pre>git switch main
+git pull origin main
+git switch -c feat/기능이름
+
+<span class="c"># ... 코드 작성 ...</span>
+
+git add .
+git commit -m "feat: 무엇을 했는지 한 줄"
+git push -u origin feat/기능이름</pre></div>
+    </div>
+  </section>
+
+  <section class="step" data-k="s4">
+    <div class="chk"><input type="checkbox" aria-label="완료"></div>
+    <h2><span class="n">4</span>Pull Request 열고 합치기</h2>
+    <div class="b">
+      <ol>
+        <li>push 하면 GitHub에 <b>Compare &amp; pull request</b> 버튼이 뜹니다. 클릭.</li>
+        <li>무엇을 했는지 적고 <b>Create pull request</b>.</li>
+        <li>팀원 1명이 <b>Files changed</b> 확인 후 <b>Merge</b>.</li>
+        <li>합쳐진 뒤 모두 최신화 ↓</li>
+      </ol>
+      <div class="code"><button class="cp" type="button">복사</button><pre>git switch main
+git pull origin main</pre></div>
+    </div>
+  </section>
+
+  <section class="step" data-k="s5">
+    <div class="chk"><input type="checkbox" aria-label="완료"></div>
+    <h2><span class="n">5</span>팀 규칙 숙지</h2>
+    <div class="b">
+      <div class="rules">
+        <div class="rule"><strong>1. main 직접 push 금지</strong><span>항상 브랜치 + PR.</span></div>
+        <div class="rule"><strong>2. 파일을 사람별로 나눈다</strong><span>같은 파일을 동시에 안 건드리면 충돌이 없다.</span></div>
+        <div class="rule"><strong>3. 작게, 자주 커밋·PR</strong><span>큰 PR은 충돌 덩어리.</span></div>
+        <div class="rule"><strong>4. 시크릿 금지</strong><span>API 키는 <code class="inl">.env</code> + <code class="inl">.gitignore</code>. 공유는 <code class="inl">.env.example</code>로만.</span></div>
+        <div class="rule"><strong>5. 시작 땐 pull, 끝날 땐 push</strong><span>로컬에만 있는 코드는 팀 코드가 아니다.</span></div>
+      </div>
+      <p class="note">충돌 시: <code class="inl">git merge main</code> 후 <code class="inl">&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;</code> 표시 정리하고 다시 커밋·push. 막히면 홈의 빨간 AI 설명서를 AI에 주세요.</p>
+    </div>
+  </section>
+
+  <div class="foot">체크 상태는 이 브라우저에만 저장됩니다. 출처: <a href="https://docs.github.com/en/get-started/using-github/github-flow" target="_blank" rel="noopener">GitHub flow 공식 문서</a></div>
+</div>
+
+<script>
+  document.querySelectorAll('.code .cp').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.parentElement.querySelector('pre'),text=pre.innerText;
+      var ok=function(){btn.textContent='복사됨';setTimeout(function(){btn.textContent='복사'},1400)};
+      var fb=function(){try{var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='선택됨'}catch(e){}};
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(ok,fb);else fb();
+    });
+  });
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  function load(){try{return JSON.parse(localStorage.getItem('hb_steps')||'{}')}catch(e){return{}}}
+  function save(s){try{localStorage.setItem('hb_steps',JSON.stringify(s))}catch(e){}}
+  function sync(){var s=load(),done=0;steps.forEach(function(el){var k=el.dataset.k,box=el.querySelector('input');box.checked=!!s[k];el.classList.toggle('done',box.checked);if(box.checked)done++});
+    document.getElementById('ptext').textContent=done+' / '+steps.length+' 완료'}
+  steps.forEach(function(el){el.querySelector('input').addEventListener('change',function(){var s=load();s[el.dataset.k]=this.checked;save(s);sync()})});
+  sync();
+</script>
+</body>
+</html>

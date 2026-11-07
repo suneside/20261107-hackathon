@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>일정 · 실행계획 — 해커톤 팀 허브</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav">
+    <a href="index.html">🏠 홈</a>
+    <a href="onboarding.html">🚀 팀 온보딩</a>
+    <a class="cur" href="schedule.html">🗓 일정 · 실행계획</a>
+    <a href="https://github.com/suneside/20261107-hackathon" target="_blank" rel="noopener">📦 GitHub</a>
+  </nav>
+
+  <header class="pg">
+    <p class="eyebrow">상세 · OBA.RUN #HAS · 11/7(토)</p>
+    <h1>시간표 &amp; 시간대별 실행계획</h1>
+    <p class="lead">공식 시간표에 우리 팀의 액션을 붙였습니다. 모든 빌드는 <b>17:00 코드 프리즈</b>를 역산해 움직입니다.</p>
+  </header>
+
+  <div class="callout">
+    <h2>병렬 실행 전략 — 3트랙 동시 가동</h2>
+    <div class="tracks">
+      <div class="track"><b>트랙 A</b><span>프론트/배포 — 데모 화면 완성 + Vercel 연속 배포(바로 미리보기 공유)</span></div>
+      <div class="track"><b>트랙 B</b><span>백엔드/로직 — 핵심 기능, 더미데이터 먼저 → 후반 실데이터 연결</span></div>
+      <div class="track"><b>트랙 C</b><span>발표/운영 — 피칭 대본·슬라이드, 투표 독려, 라이브 데모 녹화 백업</span></div>
+      <div class="track"><b>공통</b><span>MVP 1기능 집중 · 브랜치+PR · 파일 사람별 분리 · 16:40 코드 동결 후 리허설</span></div>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <table>
+      <thead><tr><th>시간</th><th>공식 일정</th><th>우리 팀 액션</th></tr></thead>
+      <tbody>
+        <tr><td class="tm">09:30<br>10:00</td><td>체크인 <span class="badge">준비</span></td><td>팀 집결·콘센트 자리 확보, GitHub·온보딩 링크 공유, 역할 3분할 확정</td></tr>
+        <tr><td class="tm">10:00<br>10:10</td><td>오프닝 (해시드 김서준)</td><td>심사 기준·규칙 메모</td></tr>
+        <tr><td class="tm">10:10<br>10:30</td><td>OBA RUN 안내 &amp; 스폰서 Track</td><td>★스폰서 Track 상품·심사항목 확인 → 맞는 Track 선택</td></tr>
+        <tr><td class="tm">10:30<br>11:00</td><td>키노트 (SKT 에이닷 윤현상)</td><td>청취하며 1명은 개발환경 세팅(clone·브랜치·.env)</td></tr>
+        <tr class="meal"><td class="tm">11:00<br>12:10</td><td>점심 식사 <span class="badge">식사</span></td><td>빠르게 먹고 ★아이디어 확정 + 스코프 축소(MVP 1기능) + 작업 분배</td></tr>
+        <tr><td class="tm">12:10<br>12:40</td><td>Unplugged: 잠깐, 바깥으로</td><td>데모 시나리오·피칭 스토리라인 초안 합의</td></tr>
+        <tr class="build"><td class="tm">12:40<br>13:30</td><td>Build Session 01 <span class="badge b">빌드</span></td><td>핵심 1기능 뼈대 구현 · 자주 커밋/PR</td></tr>
+        <tr><td class="tm">13:30<br>14:30</td><td>LETS 언컨퍼런스</td><td>1명만 관심 세션 참관(힌트·네트워킹), 나머지는 계속 빌드</td></tr>
+        <tr class="build"><td class="tm">14:30<br>15:20</td><td>Build Session 02 <span class="badge b">빌드</span></td><td>기능 완성 + 통합, 데모용 더미데이터 투입</td></tr>
+        <tr class="build"><td class="tm">15:20<br>16:00</td><td>LETS 언컨퍼런스</td><td>계속 빌드·버그 수정, Vercel 배포본 점검</td></tr>
+        <tr class="freeze"><td class="tm">16:00<br>17:00</td><td>Build Session 03 <span class="badge f">코드 프리즈 17:00</span></td><td>★16:40부터 코드 동결 → 리허설. 배포 최종본·README·발표자료 확정</td></tr>
+        <tr><td class="tm">17:00<br>18:00</td><td>피플스 초이스 투표</td><td>데모 시연으로 투표 독려, 피칭 리허설(타이머), 타팀 데모 관찰</td></tr>
+        <tr><td class="tm">18:00<br>19:00</td><td>저녁 식사 &amp; 피칭 (6팀)</td><td>저녁 간단히, 라이브 데모 리스크 대비(녹화 백업), 피칭</td></tr>
+        <tr><td class="tm">19:00<br>19:30</td><td>OBA Awards</td><td>수상 청취</td></tr>
+        <tr><td class="tm">19:30<br>19:45</td><td>Closing (MarketfitLab 정성영)</td><td>마무리·팀 회고 메모·연락처 교환</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="foot">엑셀 버전은 별도 파일로 저장돼 있습니다. 공식 시간표 출처: 현장 Timetable 11/7(Sat), OBA.RUN · #HAS.</div>
+</div>
+</body>
+</html>

@@ -3,240 +3,95 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>해커톤 팀 온보딩</title>
+<title>해커톤 팀 허브</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-  :root {
-    --bg: #f7f6f1; --paper: #ffffff; --fg: #1d2330; --muted: #5b6474; --line: #d9d6cc;
-    --ink: #1f3a93; --ink-soft: #e6ebf8; --ok: #2a9d5c;
-    --red: #c62828; --red-soft: #fdecec; --red-ink: #8e1b1b;
-    --code-bg: #1d2330; --code-fg: #e9ecf2; --code-cmt: #8d97a8;
-    --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
-    --font-mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #15181f; --paper: #1d212a; --fg: #e8eaf0; --muted: #9aa3b5; --line: #343a47;
-      --ink: #8fa8ff; --ink-soft: #232b40; --ok: #4bbd7c;
-      --red: #ff7a7a; --red-soft: #3a2020; --red-ink: #ffb0b0;
-      --code-bg: #0f1116; --code-fg: #e9ecf2; --code-cmt: #7d8698; color-scheme: dark;
-    }
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
-  .wrap { max-width: 780px; margin: 0 auto; padding: 36px max(16px, env(safe-area-inset-left, 0px)) 72px; }
-  h1 { font-size: clamp(26px, 5vw, 34px); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px; text-wrap: balance; }
-  .lead { color: var(--muted); max-width: 60ch; }
-  a { color: var(--ink); text-underline-offset: 3px; }
-  p { margin: 0; }
-
-  .eyebrow { font: 500 12px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-  header { border-bottom: 2px solid var(--fg); padding-bottom: 22px; }
-  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-  .links a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; font-size: 14px; font-weight: 500; border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px; color: var(--fg); background: var(--paper); }
-  .links a:hover { border-color: var(--ink); }
-
-  .progress { margin-top: 18px; font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 10px; }
-  .bar { flex: 1; height: 7px; background: var(--line); border-radius: 99px; overflow: hidden; }
-  .bar > i { display: block; height: 100%; width: 0; background: var(--ok); transition: width .25s ease; }
-
-  /* 빨간 AI 설명서 */
-  .ai { margin-top: 28px; border: 2px solid var(--red); border-radius: 14px; background: var(--red-soft); padding: 18px 20px; }
-  .ai .tag { display: inline-block; font: 500 11px var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--red); padding: 3px 10px; border-radius: 6px; }
-  .ai h2 { color: var(--red-ink); margin: 10px 0 4px; font-size: 18px; }
-  .ai p { color: var(--red-ink); font-size: 14px; }
-  .ai .btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0; }
-  .ai button, .ai a.dl { font: 600 14px var(--font-body); border-radius: 9px; padding: 9px 16px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
-  .ai button.copy { background: var(--red); color: #fff; border: none; }
-  .ai a.dl { background: var(--paper); color: var(--red-ink); border: 1.5px solid var(--red); }
-
-  /* 단계 */
-  .step { margin-top: 26px; display: grid; grid-template-columns: 38px 1fr; gap: 14px; }
-  .step .chk { grid-row: span 2; }
-  .step .chk input { width: 22px; height: 22px; accent-color: var(--ok); cursor: pointer; margin-top: 2px; }
-  .step h2 { margin: 0; font-size: 19px; font-weight: 700; display: flex; gap: 9px; align-items: baseline; }
-  .step h2 .n { font: 600 13px var(--font-mono); color: var(--ink); border: 1.5px solid var(--ink); border-radius: 7px; padding: 1px 7px; }
-  .step .b { margin-top: 10px; display: grid; gap: 10px; }
-  .step.done h2 { color: var(--muted); }
-  .step.done h2 .n { color: var(--muted); border-color: var(--line); }
-  ul, ol { margin: 0; padding-left: 20px; display: grid; gap: 5px; }
-  .note { color: var(--muted); font-size: 14px; }
-
-  .code { position: relative; background: var(--code-bg); color: var(--code-fg); border-radius: 8px; overflow-x: auto; }
-  .code pre { margin: 0; padding: 13px 15px; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; white-space: pre; }
-  .code .c { color: var(--code-cmt); }
-  .code .cp { position: absolute; top: 7px; right: 7px; font: 500 12px var(--font-body); color: var(--code-fg); background: transparent; border: 1px solid rgba(255,255,255,.3); border-radius: 5px; padding: 3px 9px; cursor: pointer; }
-  .code .cp:hover { background: rgba(255,255,255,.14); }
-  code.inl { font-family: var(--font-mono); font-size: 0.88em; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
-
-  .rules { margin-top: 10px; display: grid; border-top: 1px solid var(--line); }
-  .rule { padding: 11px 0; border-bottom: 1px solid var(--line); }
-  .rule strong { display: block; } .rule span { color: var(--muted); font-size: 14px; }
-
-  .foot { margin-top: 44px; padding-top: 18px; border-top: 2px solid var(--fg); color: var(--muted); font-size: 13px; }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <p class="eyebrow">Hackathon · 2026-11-07 · 팀원 온보딩</p>
-    <h1>위에서부터 그대로 따라 하세요</h1>
-    <p class="lead">이 페이지 하나로 저장소 받기부터 첫 Pull Request까지 끝냅니다. 각 단계의 명령은 오른쪽 <b>복사</b> 버튼으로 복사해 터미널에 붙여넣으세요.</p>
-    <div class="links">
-      <a href="https://github.com/suneside/20261107-hackathon" target="_blank" rel="noopener">📦 GitHub 저장소</a>
-      <a href="협업가이드.md" download>⬇ 설명서 .md</a>
-    </div>
-    <div class="progress">
-      <span id="ptext">0 / 6 완료</span>
-      <span class="bar"><i id="pbar"></i></span>
-    </div>
+  <nav class="nav">
+    <a class="cur" href="index.html">🏠 홈</a>
+    <a href="onboarding.html">🚀 팀 온보딩</a>
+    <a href="schedule.html">🗓 일정 · 실행계획</a>
+    <a href="https://github.com/suneside/20261107-hackathon" target="_blank" rel="noopener">📦 GitHub</a>
+  </nav>
+
+  <header class="pg">
+    <p class="eyebrow">OBA.RUN · #HAS · 2026-11-07 (토)</p>
+    <h1>해커톤 팀 허브</h1>
+    <p class="lead">팀원과 함께 빌드하기 위한 출발점. 큰 항목부터 보고, 필요한 상세는 아래 카드로 들어가세요.</p>
   </header>
 
+  <!-- 큰 항목 카드 -->
+  <div class="cards">
+    <a class="card" href="onboarding.html">
+      <span class="ic">🚀</span>
+      <span class="t">팀 온보딩</span>
+      <span class="d">저장소 받기 → 브랜치 작업 → 첫 Pull Request. 순서대로 따라 하면 끝.</span>
+      <span class="go">따라 하기 →</span>
+    </a>
+    <a class="card" href="schedule.html">
+      <span class="ic">🗓</span>
+      <span class="t">일정 · 실행계획</span>
+      <span class="d">오늘 시간표와 시간대별 우리 팀 액션. 병렬 3트랙 전략 포함.</span>
+      <span class="go">계획 보기 →</span>
+    </a>
+    <a class="card" href="https://github.com/suneside/20261107-hackathon" target="_blank" rel="noopener">
+      <span class="ic">📦</span>
+      <span class="t">GitHub 저장소</span>
+      <span class="d">코드를 함께 올리는 곳. 공개 저장소라 팀원 누구나 열 수 있습니다.</span>
+      <span class="go">저장소 열기 →</span>
+    </a>
+    <a class="card redcard" href="협업가이드.md" download>
+      <span class="ic">🤖</span>
+      <span class="t">AI 협업 설명서</span>
+      <span class="d">막히면 이 파일을 AI에 그대로 주세요. 규칙대로 대신 진행합니다.</span>
+      <span class="go">.md 다운로드 →</span>
+    </a>
+  </div>
+
+  <!-- 오늘 큰 흐름 4단계 -->
+  <div class="phases">
+    <div class="phase">
+      <span class="tm">09:30~11:00</span>
+      <span><span class="lb">오전 — 체크인 · 오프닝 · 키노트</span><br><span class="sub">자리·개발환경 세팅, 역할 3분할 확정</span></span>
+    </div>
+    <div class="phase">
+      <span class="tm">11:00~12:40</span>
+      <span><span class="lb">점심 · 아이디어 확정</span><br><span class="sub">MVP 1기능으로 스코프 축소, 작업 분배</span></span>
+    </div>
+    <div class="phase freeze">
+      <span class="tm">12:40~17:00</span>
+      <span><span class="lb">빌드 집중 (3세션) — ★코드 프리즈 17:00</span><br><span class="sub">병렬로 빌드, 16:40부터 동결 후 리허설</span></span>
+    </div>
+    <div class="phase">
+      <span class="tm">17:00~19:45</span>
+      <span><span class="lb">투표 · 피칭(6팀) · 시상 · 클로징</span><br><span class="sub">데모 시연으로 투표 독려, 피칭</span></span>
+    </div>
+  </div>
+
+  <!-- AI 설명서 복사 -->
   <div class="ai">
     <span class="tag">AI에게 붙여넣기</span>
     <h2>막히면 AI에게 맡기세요</h2>
-    <p>아래 설명서를 복사해 Claude Code · ChatGPT에 주면, 이 규칙대로 대신 진행해 줍니다.</p>
+    <p>아래 설명서를 복사해 Claude Code · ChatGPT에 주면, 팀 협업 규칙대로 대신 진행합니다.</p>
     <div class="btns">
       <button class="copy" id="copyBtn" type="button">📋 설명서 전체 복사</button>
       <a class="dl" href="협업가이드.md" download>⬇ .md 다운로드</a>
     </div>
   </div>
 
-  <!-- STEP 0 -->
-  <section class="step" data-k="s0">
-    <div class="chk"><input type="checkbox" aria-label="완료 체크"></div>
-    <h2><span class="n">0</span>준비물 확인</h2>
-    <div class="b">
-      <ul>
-        <li><b>GitHub 계정</b> — 없으면 <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>에서 가입하고, 아이디를 팀장에게 알려 초대받기.</li>
-        <li><b>Git 설치</b> — 아래 명령으로 버전이 나오면 설치된 것.</li>
-      </ul>
-      <div class="code"><button class="cp" type="button">복사</button><pre>git --version</pre></div>
-      <p class="note">macOS는 위 명령 실행 시 자동 설치 안내가 뜹니다. Windows는 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com</a>에서 설치.</p>
-    </div>
-  </section>
-
-  <!-- STEP 1 -->
-  <section class="step" data-k="s1">
-    <div class="chk"><input type="checkbox" aria-label="완료 체크"></div>
-    <h2><span class="n">1</span>내 정보 등록 (처음 한 번)</h2>
-    <div class="b">
-      <div class="code"><button class="cp" type="button">복사</button><pre>git config --global user.name  "본인이름"
-git config --global user.email "본인@example.com"</pre></div>
-      <p class="note">GitHub 가입에 쓴 이메일을 그대로 넣으세요. 커밋에 이 정보가 찍힙니다.</p>
-    </div>
-  </section>
-
-  <!-- STEP 2 -->
-  <section class="step" data-k="s2">
-    <div class="chk"><input type="checkbox" aria-label="완료 체크"></div>
-    <h2><span class="n">2</span>저장소 받기</h2>
-    <div class="b">
-      <div class="code"><button class="cp" type="button">복사</button><pre>git clone https://github.com/suneside/20261107-hackathon.git
-cd 20261107-hackathon</pre></div>
-      <p class="note">"Permission denied"가 나오면 아직 초대 수락 전입니다. GitHub 알림/이메일의 초대를 먼저 수락하세요.</p>
-    </div>
-  </section>
-
-  <!-- STEP 3 -->
-  <section class="step" data-k="s3">
-    <div class="chk"><input type="checkbox" aria-label="완료 체크"></div>
-    <h2><span class="n">3</span>내 브랜치에서 작업</h2>
-    <div class="b">
-      <p class="note">기능 하나마다 브랜치를 새로 팝니다. 이름 예: <code class="inl">feat/login-ui</code></p>
-      <div class="code"><button class="cp" type="button">복사</button><pre>git switch main
-git pull origin main
-git switch -c feat/기능이름
-
-<span class="c"># ... 코드 작성 ...</span>
-
-git add .
-git commit -m "feat: 무엇을 했는지 한 줄"
-git push -u origin feat/기능이름</pre></div>
-    </div>
-  </section>
-
-  <!-- STEP 4 -->
-  <section class="step" data-k="s4">
-    <div class="chk"><input type="checkbox" aria-label="완료 체크"></div>
-    <h2><span class="n">4</span>Pull Request 열고 합치기</h2>
-    <div class="b">
-      <ol>
-        <li>push 하면 GitHub 저장소 페이지에 <b>Compare &amp; pull request</b> 버튼이 뜹니다. 클릭.</li>
-        <li>무엇을 했는지 한두 줄 적고 <b>Create pull request</b>.</li>
-        <li>팀원 1명이 <b>Files changed</b>를 훑어보고 문제 없으면 <b>Merge</b>.</li>
-        <li>합쳐진 뒤 모두 최신 코드를 받습니다 ↓</li>
-      </ol>
-      <div class="code"><button class="cp" type="button">복사</button><pre>git switch main
-git pull origin main</pre></div>
-    </div>
-  </section>
-
-  <!-- STEP 5 -->
-  <section class="step" data-k="s5">
-    <div class="chk"><input type="checkbox" aria-label="완료 체크"></div>
-    <h2><span class="n">5</span>팀 규칙 숙지</h2>
-    <div class="b">
-      <div class="rules">
-        <div class="rule"><strong>1. main에 직접 push 금지</strong><span>항상 브랜치 + PR.</span></div>
-        <div class="rule"><strong>2. 파일을 사람별로 나눈다</strong><span>같은 파일을 동시에 안 건드리면 충돌이 없다.</span></div>
-        <div class="rule"><strong>3. 작게, 자주 커밋·PR</strong><span>큰 PR은 충돌 덩어리가 된다.</span></div>
-        <div class="rule"><strong>4. 시크릿 금지</strong><span>API 키는 <code class="inl">.env</code> + <code class="inl">.gitignore</code>. 공유는 <code class="inl">.env.example</code>로만.</span></div>
-        <div class="rule"><strong>5. 시작 땐 pull, 끝날 땐 push</strong><span>로컬에만 있는 코드는 팀 코드가 아니다.</span></div>
-      </div>
-      <p class="note">충돌이 났을 때: <code class="inl">git merge main</code> 후 <code class="inl">&lt;&lt;&lt;&lt; ==== &gt;&gt;&gt;&gt;</code> 표시를 정리하고 다시 커밋·push. 막히면 위 빨간 설명서를 AI에 주세요.</p>
-    </div>
-  </section>
-
-  <div class="foot">
-    체크 상태는 이 브라우저에만 저장됩니다. 출처: <a href="https://docs.github.com/en/get-started/using-github/github-flow" target="_blank" rel="noopener">GitHub flow 공식 문서</a> · 저장소 <code class="inl">index.html</code>에서 배포.
-  </div>
+  <div class="foot">첫 페이지는 큰 항목만. 상세는 각 카드의 하위 페이지에 있습니다. 출처: <a href="https://docs.github.com/en/get-started/using-github/github-flow" target="_blank" rel="noopener">GitHub flow 공식 문서</a></div>
 </div>
 
 <script>
-  // 명령 복사 버튼
-  document.querySelectorAll('.code .cp').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var pre = btn.parentElement.querySelector('pre'), text = pre.innerText;
-      var ok = function () { btn.textContent = '복사됨'; setTimeout(function () { btn.textContent = '복사'; }, 1400); };
-      var fb = function () { try { var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = '선택됨'; } catch (e) {} };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fb); else fb();
-    });
+  var guideCache=null,cbtn=document.getElementById('copyBtn');
+  fetch('협업가이드.md').then(function(r){return r.text()}).then(function(t){guideCache=t}).catch(function(){});
+  cbtn.addEventListener('click',function(){
+    var put=function(t){var ok=function(){cbtn.textContent='✓ 복사됨';setTimeout(function(){cbtn.textContent='📋 설명서 전체 복사'},1600)};
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,function(){cbtn.textContent='다운로드를 이용하세요'});else cbtn.textContent='다운로드를 이용하세요'};
+    if(guideCache)put(guideCache);else fetch('협업가이드.md').then(function(r){return r.text()}).then(function(t){guideCache=t;put(t)}).catch(function(){cbtn.textContent='불러오기 실패 — .md 다운로드'});
   });
-
-  // AI 설명서 복사 (.md fetch)
-  var guideCache = null;
-  var cbtn = document.getElementById('copyBtn');
-  fetch('협업가이드.md').then(function (r) { return r.text(); }).then(function (t) { guideCache = t; }).catch(function () {});
-  cbtn.addEventListener('click', function () {
-    var put = function (t) {
-      var ok = function () { cbtn.textContent = '✓ 복사됨'; setTimeout(function () { cbtn.textContent = '📋 설명서 전체 복사'; }, 1600); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, function () { cbtn.textContent = '다운로드를 이용하세요'; }); else cbtn.textContent = '다운로드를 이용하세요';
-    };
-    if (guideCache) put(guideCache);
-    else fetch('협업가이드.md').then(function (r) { return r.text(); }).then(function (t) { guideCache = t; put(t); }).catch(function () { cbtn.textContent = '불러오기 실패 — .md 다운로드 이용'; });
-  });
-
-  // 진행 체크 (localStorage)
-  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
-  function load() { try { return JSON.parse(localStorage.getItem('hb_steps') || '{}'); } catch (e) { return {}; } }
-  function save(s) { try { localStorage.setItem('hb_steps', JSON.stringify(s)); } catch (e) {} }
-  function sync() {
-    var s = load(), done = 0;
-    steps.forEach(function (el) {
-      var k = el.dataset.k, box = el.querySelector('input');
-      box.checked = !!s[k]; el.classList.toggle('done', box.checked); if (box.checked) done++;
-    });
-    var total = steps.length;
-    document.getElementById('ptext').textContent = done + ' / ' + total + ' 완료';
-    document.getElementById('pbar').style.width = (done / total * 100) + '%';
-  }
-  steps.forEach(function (el) {
-    el.querySelector('input').addEventListener('change', function () {
-      var s = load(); s[el.dataset.k] = this.checked; save(s); sync();
-    });
-  });
-  sync();
 </script>
 </body>
 </html>
