@@ -23,13 +23,29 @@
     <h1>위에서부터 그대로 따라 하세요</h1>
     <p class="lead">저장소 받기부터 첫 Pull Request까지. 명령은 오른쪽 <b>복사</b> 버튼으로 복사해 터미널에 붙여넣으세요.</p>
     <div class="phases" style="margin-top:14px">
-      <div class="phase" style="grid-template-columns:1fr"><span><span class="lb" id="ptext">0 / 6 완료</span></span></div>
+      <div class="phase" style="grid-template-columns:1fr"><span><span class="lb" id="ptext">내 체크 0 / 6</span></span></div>
     </div>
   </header>
 
+  <section class="status" aria-label="팀 준비 현황">
+    <h2>팀 준비 현황 <span class="when">11:00 확인 · 명령 실행 결과 기준</span></h2>
+    <ul class="checklist">
+      <li class="ok">GitHub 저장소 만들기 · 공개<span>suneside/20261107-hackathon, 누구나 clone 가능</span></li>
+      <li class="ok">팀 허브 사이트 배포<span>hackathon-20261107.vercel.app</span></li>
+      <li class="ok">AI 협업 설명서<span>먼저 읽고, 안에서 복사·다운로드</span></li>
+      <li class="ok">일정 · 2인 실행계획<span>트랙 2개, 17:00 정각 제출 반영</span></li>
+      <li class="ok">제출 마감 타이머<span>홈 상단, 메뉴 오른쪽</span></li>
+      <li class="ok">스폰서 녹음 받아쓰기 준비<span>성훈 맥으로 에어드롭하면 자동 시작</span></li>
+      <li class="ok">GitHub · Vercel 로그인<span>성훈 맥, suneside 계정</span></li>
+      <li class="todo">팀원 push 권한<span>팀원 GitHub 아이디를 받아 Collaborator로 초대해야 함</span></li>
+      <li class="todo">스폰서 트랙 · 제출 방법 · A/B 역할 확정<span><a href="schedule.html">일정 페이지의 빨간 칸</a></span></li>
+      <li class="todo">Supabase 로그인<span>실시간 데이터가 필요할 때만</span></li>
+    </ul>
+  </section>
+
   <section class="step" data-k="s0">
     <div class="chk"><input type="checkbox" aria-label="완료"></div>
-    <h2><span class="n">0</span>준비물 확인</h2>
+    <h2><span class="n">0</span>준비물 확인<span class="who-st ok">성훈 ✓</span></h2>
     <div class="b">
       <ul>
         <li><b>GitHub 계정</b> — 없으면 <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> 가입 후 아이디를 팀장에게 전달.</li>
@@ -42,17 +58,18 @@
 
   <section class="step" data-k="s1">
     <div class="chk"><input type="checkbox" aria-label="완료"></div>
-    <h2><span class="n">1</span>내 정보 등록 (처음 한 번)</h2>
+    <h2><span class="n">1</span>내 정보 등록 (처음 한 번)<span class="who-st ok">성훈 ✓</span></h2>
     <div class="b">
       <div class="code"><button class="cp" type="button">복사</button><pre>git config --global user.name  "본인이름"
 git config --global user.email "본인@example.com"</pre></div>
       <p class="note">GitHub 가입 이메일을 그대로. 커밋에 이 정보가 찍힙니다.</p>
+      <p class="note">성훈: 이 저장소만 <code class="inl">suneside &lt;sunesideofficial@gmail.com&gt;</code>으로 설정했습니다. 전역 설정은 그대로입니다.</p>
     </div>
   </section>
 
   <section class="step" data-k="s2">
     <div class="chk"><input type="checkbox" aria-label="완료"></div>
-    <h2><span class="n">2</span>저장소 받기</h2>
+    <h2><span class="n">2</span>저장소 받기<span class="who-st ok">성훈 ✓</span></h2>
     <div class="b">
       <div class="code"><button class="cp" type="button">복사</button><pre>git clone https://github.com/suneside/20261107-hackathon.git
 cd 20261107-hackathon</pre></div>
@@ -62,9 +79,10 @@ cd 20261107-hackathon</pre></div>
 
   <section class="step" data-k="s3">
     <div class="chk"><input type="checkbox" aria-label="완료"></div>
-    <h2><span class="n">3</span>내 브랜치에서 작업</h2>
+    <h2><span class="n">3</span>내 브랜치에서 작업<span class="who-st todo">아직</span></h2>
     <div class="b">
       <p class="note">기능 하나마다 브랜치를 새로. 이름 예: <code class="inl">feat/login-ui</code></p>
+      <p class="note">지금까지 사이트 세팅 커밋은 브랜치 없이 main에 바로 올렸습니다. 12:40 개발부터 이 방식으로 진행합니다.</p>
       <div class="code"><button class="cp" type="button">복사</button><pre>git switch main
 git pull origin main
 git switch -c feat/기능이름
@@ -79,7 +97,7 @@ git push -u origin feat/기능이름</pre></div>
 
   <section class="step" data-k="s4">
     <div class="chk"><input type="checkbox" aria-label="완료"></div>
-    <h2><span class="n">4</span>Pull Request 열고 합치기</h2>
+    <h2><span class="n">4</span>Pull Request 열고 합치기<span class="who-st todo">아직</span></h2>
     <div class="b">
       <ol>
         <li>push 하면 GitHub에 <b>Compare &amp; pull request</b> 버튼이 뜹니다. 클릭.</li>
@@ -107,7 +125,7 @@ git pull origin main</pre></div>
     </div>
   </section>
 
-  <div class="foot">체크 상태는 이 브라우저에만 저장됩니다. 출처: <a href="https://docs.github.com/en/get-started/using-github/github-flow" target="_blank" rel="noopener">GitHub flow 공식 문서</a></div>
+  <div class="foot">체크박스는 각자 브라우저에만 저장됩니다. 초록 "성훈 ✓"와 위 준비 현황은 명령 실행으로 확인한 결과라 모두에게 같게 보입니다. 출처: <a href="https://docs.github.com/en/get-started/using-github/github-flow" target="_blank" rel="noopener">GitHub flow 공식 문서</a></div>
 </div>
 
 <script>
@@ -123,7 +141,7 @@ git pull origin main</pre></div>
   function load(){try{return JSON.parse(localStorage.getItem('hb_steps')||'{}')}catch(e){return{}}}
   function save(s){try{localStorage.setItem('hb_steps',JSON.stringify(s))}catch(e){}}
   function sync(){var s=load(),done=0;steps.forEach(function(el){var k=el.dataset.k,box=el.querySelector('input');box.checked=!!s[k];el.classList.toggle('done',box.checked);if(box.checked)done++});
-    document.getElementById('ptext').textContent=done+' / '+steps.length+' 완료'}
+    document.getElementById('ptext').textContent='내 체크 '+done+' / '+steps.length}
   steps.forEach(function(el){el.querySelector('input').addEventListener('change',function(){var s=load();s[el.dataset.k]=this.checked;save(s);sync()})});
   sync();
 </script>
