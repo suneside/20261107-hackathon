@@ -150,3 +150,6 @@ td.parcell{color:var(--muted)}
 .grp.cs{align-self:flex-end}
 .grp.cs .odo-d{font-size:clamp(16px,4.4vw,38px);width:.62em;color:#6f7fa3;background:transparent;box-shadow:none}
 .grp.cs [data-g="c"]::before{content:".";font:600 clamp(16px,4.4vw,38px)/1.15 var(--fm);color:#46557a}
+/* 초도 작고 흐리게, 회전 없이 */
+.grp.cs .odo-strip{transition:none}
+.grp.cs [data-g="s"]::before{content:":";font:600 clamp(16px,4.4vw,38px)/1.15 var(--fm);color:#46557a}
