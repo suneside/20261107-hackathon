@@ -126,12 +126,12 @@ td.parcell{color:var(--muted)}
 .deadline{margin-top:20px;background:#0f1420;color:#eef2fb;border:1px solid #232c3f;border-radius:18px;padding:18px 16px 16px;display:grid;gap:12px;justify-items:center;transition:box-shadow .3s ease}
 .deadline .dl-k{font:600 13.5px var(--fb);letter-spacing:.03em;color:#9fb0d0}
 .deadline .dl-k b{color:#fff}
-.odo{display:flex;align-items:flex-start;justify-content:center;gap:6px}
+.odo{display:flex;align-items:flex-start;justify-content:center;gap:5px;max-width:100%}
 .odo .grp{display:grid;justify-items:center;gap:6px}
 .odo [data-g]{display:flex;gap:4px}
 .odo .u{font:500 11px var(--fb);letter-spacing:.12em;color:#7f8fb0}
-.odo .sep{font:600 clamp(40px,11vw,88px)/1.15 var(--fm);color:#46557a}
-.odo-d{display:inline-block;height:1.15em;width:.66em;overflow:hidden;background:#1a2235;border-radius:.12em;font:600 clamp(40px,11vw,88px)/1.15 var(--fm);color:#f4f7ff;text-align:center;box-shadow:inset 0 -.06em 0 rgba(0,0,0,.4)}
+.odo .sep{font:600 clamp(30px,9vw,80px)/1.15 var(--fm);color:#46557a}
+.odo-d{display:inline-block;height:1.15em;width:.66em;overflow:hidden;background:#1a2235;border-radius:.12em;font:600 clamp(30px,9vw,80px)/1.15 var(--fm);color:#f4f7ff;text-align:center;box-shadow:inset 0 -.06em 0 rgba(0,0,0,.4)}
 .odo-strip{display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.18,.89,.32,1.15)}
 .odo-strip>span{display:block;height:1.15em;line-height:1.15em}
 .deadline.warn .odo-d{color:#ffcf5c}
@@ -145,3 +145,9 @@ td.parcell{color:var(--muted)}
 .dl-over{margin:0;font-weight:700;color:#ff7070}
 .nav a.dl-chip{margin-left:auto;background:#0f1420;color:#eef2fb;border-color:#0f1420}
 .nav a.dl-chip b{font:600 13px var(--fm);font-variant-numeric:tabular-nums}
+/* 1/100초: 10분의 1초는 짧게, 100분의 1초는 매 프레임 회전 */
+.odo-d.tenths .odo-strip{transition:transform .12s linear}
+.odo-d.hund .odo-strip{transition:transform .04s linear}
+.grp.cs .odo-d{color:#8fb4ff}
+.deadline.warn .grp.cs .odo-d{color:#ffcf5c}
+.deadline.crit .grp.cs .odo-d,.deadline.over .grp.cs .odo-d{color:#ff7070}
